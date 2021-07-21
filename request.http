@@ -1,0 +1,220 @@
+@url = http://localhost:3000
+
+###GET MENU
+GET {{url}}/dealer/getMenu
+Content-Type: application/json
+Authorization : Bearer {{dtoken}}
+
+##################################################################   ADMIN FUNCTIONS    ##################################################################################
+
+###LOGIN
+POST {{url}}/admin/login
+Content-Type : application/json
+
+{
+    "email" : "prity.priya@xyz.com" ,
+    "password" : "Prity"
+}
+
+@atoken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDIzYjNhN2E1ZDc3NDBlZWMwZWM0ZWYiLCJlbWFpbCI6InByaXR5LnByaXlhQHh5ei5jb20iLCJpYXQiOjE2MTMzNzQxMjd9.ieGEkMkj0x8xG31dVR5ZWHnjKWkcCG7LInbySOQWq2k
+
+###ADD DEALER
+POST {{url}}/admin/addDealer
+Content-Type : application/json
+Authorization : Bearer {{atoken}}
+
+{
+    "name" : "Pkjadr ",
+    "email" : "ospfw@xyz.com",
+    "password" : "sjhdfk" 
+}
+
+###ADD SHOPKEEPER
+POST {{url}}/admin/addShopkeeper
+Content-Type : application/json
+Authorization : Bearer {{atoken}}
+
+{
+    "shop_name" : "Mixing Fruits",
+    "shop_number" : 116 , 
+    "owner_name" : "Den Marken" ,
+    "email" : "den.marken@xyz.com",
+    "address" : "Sector- 71/C , City Park , Bhopal , Madhya Pradesh" ,
+    "password" : "Den"
+}
+
+###ADD REPRESENTATIVE
+POST {{url}}/admin/addRepresentative
+Content-Type : application/json
+Authorization : Bearer {{atoken}}
+
+{
+    "representative_name" : "Adele",
+    "email" : "adele@xyz.com",
+    "password" :"Adele" 
+}
+
+###GET UNDELIVERED DEALER ORDERS
+GET {{url}}/admin/undeliveredOrder
+Content-Type : application/json
+Authorization : Bearer {{atoken}}
+
+###UPDATE STATUS OF ORDERS
+POST {{url}}/admin/updateStatus
+Content-Type: application/json
+Authorization: Bearer {{atoken}}
+
+{
+    "orderId" : "602a54e0d644ae51b4ec91af" ,
+    "status" : "delivered"
+}
+
+##################################################################   DEALER FUNCTIONS    ##################################################################################
+
+###LOGIN
+POST {{url}}/dealer/login
+Content-Type : application/json
+
+{
+    "email" : "harry.style@xyz.com",
+    "password" : "Harry"
+}
+
+@dtoken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDIzYjQ0YWY0ZDRhZTBjZmM0YmJlNGEiLCJlbWFpbCI6ImhhcnJ5LnN0eWxlQHh5ei5jb20iLCJpYXQiOjE2MTMzODM2OTB9.ZXGTONfedZBmJtptADzgWovJdDeIv4UJTm7xLAPPPl8
+
+###CHECK FOR NEWLY PLACED ORDERS
+GET {{url}}/dealer/yetToBeDelivered
+Content-Type: application/json
+Authorization: Bearer {{dtoken}}
+
+###UPDATE STATUS OF ORDERS
+POST {{url}}/dealer/updateStatus
+Content-Type: application/json
+Authorization: Bearer {{dtoken}}
+
+{
+    "orderId" : "602a45739757433df08952b7" ,
+    "status" : "delivered"
+}
+
+###ADD TO CART 
+POST {{url}}/dealer/addToCart
+Content-Type: application/json
+Authorization: Bearer {{dtoken}}
+
+{
+ "productId" : "6023b268ffb43701bc657468" ,
+ "quantity" : 10
+}
+
+###PLACE ORDER
+POST {{url}}/dealer/placeOrder
+Content-Type: application/json
+Authorization: Bearer {{dtoken}}
+
+###REMOVE ITEMS FROM CART
+DELETE   {{url}}/dealer/emptyCart
+Content-Type: application/json
+Authorization: Bearer {{dtoken}}
+
+##################################################################   SHOPKEEPER FUNCTIONS    #############################################################################
+
+###LOGIN
+POST {{url}}/shopkeeper/login
+Content-Type : application/json
+
+{
+    "email" : "sasha.sloan@xyz.com",
+    "password" : "Sasha"
+}
+
+@stoken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDI4YmI0NmM1MzQ1ZDE4ZDAxZDY5NjEiLCJlbWFpbCI6InNhc2hhLnNsb2FuQHh5ei5jb20iLCJpYXQiOjE2MTMzODIzOTR9.W5-vwNgNFB00xJRQzBxVKHwhM1dq8Zz6lmTov2hWtyY
+
+###ADD TO CART
+POST {{url}}/shopkeeper/addToCart
+Content-Type : application/json
+Authorization : Bearer {{stoken}}
+
+{
+    "productId" : "6023b268ffb43701bc657468",
+    "quantity" : "4"
+
+}
+
+###PLACING ORDER 
+POST {{url}}/shopkeeper/placeOrder
+Content-Type: application/json
+Authorization: Bearer {{stoken}}
+
+###REMOVE ITEMS FROM CART
+DELETE   {{url}}/shopkeeper/emptyCart
+Content-Type: application/json
+Authorization: Bearer {{stoken}}
+
+#####CHECK ORDER STATUS 
+GET {{url}}/shopkeeper/orders
+Content-Type: application/json
+Authorization: Bearer {{stoken}}
+
+###APPROVE ORDER OF REPRESENTATIVE
+POST {{url}}/shopkeeper/approveRepresentative
+Content-Type: application/json
+Authorization: Bearer {{stoken}}
+
+{
+    "representativeID" : "6023b9a4828ddc1dc0a9012e"
+}
+
+##################################################################   REPRESENTATIVE FUNCTIONS    #############################################################################
+
+###LOGIN
+POST {{url}}/representative/login
+Content-Type : application/json
+
+{
+    "email" : "hailey.kurdon@xyyz.com",
+    "password" : "Hailey"
+}
+
+@rtoken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDIzYjlhNDgyOGRkYzFkYzBhOTAxMmUiLCJlbWFpbCI6ImhhaWxleS5rdXJkb25AeHl5ei5jb20iLCJpYXQiOjE2MTMzNzk2ODF9.8cnCHmjr9FIw6p6ynd8b8vbJSqEuw6W51Om8pHeR1QI
+
+###ADD TO CART
+POST {{url}}/representative/addToCart
+Content-Type: application/json
+Authorization: Bearer {{rtoken}}
+
+{
+ "productId" : "6023626fb4f57c24d0ab40d9" ,
+ "quantity" : 1
+}
+
+###ADD VISTS
+POST {{url}}/representative/addVisit
+Content-Type: application/json
+Authorization: Bearer {{rtoken}}
+
+{
+ "shopNo" : 104 ,
+ "shopkeeperId" : "6027d610632dad2f40e3b42a"
+}
+
+###PLACING ORDER 
+POST {{url}}/representative/placeOrder
+Content-Type: application/json
+Authorization: Bearer {{rtoken}}
+
+{
+    "shopkeeperId" : "6027d610632dad2f40e3b42a" ,
+    "shopNo" : 104
+}
+
+#####CHECK ORDER STATUS 
+GET {{url}}/representative/orders
+Content-Type: application/json
+Authorization: Bearer {{rtoken}}
+
+###REMOVE ITEMS FROM CART
+DELETE   {{url}}/representative/emptyCart
+Content-Type: application/json
+Authorization: Bearer {{rtoken}}
+
