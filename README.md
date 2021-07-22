@@ -1,2 +1,3 @@
 # Order-Management-System-
-This a node.js based application through which shopkeepers  can change the status of order. The backend  provides client to shop smoothly and create a bag and place order and track it accordingly. 
+
+This is a node.js based application. The database used is MongoDB. The project focuses on the backend services where we have a DB that consists of various items of fruits. The client can check the products and add them accordingly to their bag and purchase the items. The vendors will be notified as the order will be placed and can change the status of the order for easy tracking of the customer order. The vendor can even add products to the DB or add item to the stock.
